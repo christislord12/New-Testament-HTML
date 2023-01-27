@@ -3,11 +3,19 @@
 
 <script> 
 x = 1;
+redletter = 0;
 function goToImageNum(imagenum)
 {
 x = parseInt(imagenum)
 var img = document.getElementById("image");
-img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+if (redletter == 0) 
+{
+	img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+}
+if (redletter == 1) 
+{
+	img.src="NewTestamentPsalmsRedLetter/" + "NewTestamentPsalms" + x.toString() + ".jpg";
+}
 return false;
 }
 function nextImage()
@@ -18,7 +26,14 @@ if (x > 510)
 {
 	x = 510;
 }
-img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+if (redletter == 0) 
+{
+	img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+}
+if (redletter == 1) 
+{
+	img.src="NewTestamentPsalmsRedLetter/" + "NewTestamentPsalms" + x.toString() + ".jpg";
+}
 document.getElementById("pages").value = x;
 return false;
 }
@@ -31,12 +46,39 @@ if (x < 1)
 {
 	x = 1;
 }
-img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+if (redletter == 0) 
+{
+	img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+}
+if (redletter == 1) 
+{
+	img.src="NewTestamentPsalmsRedLetter/" + "NewTestamentPsalms" + x.toString() + ".jpg";
+}
 document.getElementById("pages").value = x;
 return false;
+
 }
 
+function toggleRedLetter()
+{
+var img = document.getElementById("image");
 
+if (redletter == 0) 
+{
+	redletter = 1;
+	img.src="NewTestamentPsalmsRedLetter/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+	return false;
+}
+
+if (redletter == 1) 
+{
+	redletter = 0;
+	img.src="NewTestamentPsalms/" + "NewTestamentPsalms" + x.toString() + ".JPG";
+	return false;
+}
+
+return false;
+}
 
 </script>
 <label for="pages">Page:</label>
@@ -553,6 +595,7 @@ return false;
   <option value="510">510</option>
 </select>
 <button s onclick="previousImage();">Previous Page</button>
-<button s onclick="nextImage();">Next Page</button>
+<button s1 onclick="nextImage();">Next Page</button>
+<button s2 onclick="toggleRedLetter();">Red Letter (ON/OFF)</button>
 <br> 
 <img id="image" src="NewTestamentPsalms/NewTestamentPsalms1.JPG"  width="460" height="650">
